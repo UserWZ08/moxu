@@ -1,0 +1,264 @@
+{
+  "theme": "跟随系统",
+  "billing": true,
+  "communities": {
+    "示例小区": [
+      "1栋",
+      "2栋",
+      "3栋"
+    ]
+  },
+  "printers": [
+    {
+      "name": "示例黑白打印机",
+      "enabled": true,
+      "priority": 10,
+      "dpi": [
+        600,
+        1200
+      ],
+      "rules": [
+        {
+          "paper": "A4",
+          "color": "黑白",
+          "duplex": "单面"
+        },
+        {
+          "paper": "A4",
+          "color": "黑白",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "A4",
+          "color": "黑白",
+          "duplex": "双面短边"
+        },
+        {
+          "paper": "A5",
+          "color": "黑白",
+          "duplex": "单面"
+        },
+        {
+          "paper": "A5",
+          "color": "黑白",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "A5",
+          "color": "黑白",
+          "duplex": "双面短边"
+        },
+        {
+          "paper": "B5",
+          "color": "黑白",
+          "duplex": "单面"
+        },
+        {
+          "paper": "B5",
+          "color": "黑白",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "B5",
+          "color": "黑白",
+          "duplex": "双面短边"
+        }
+      ]
+    },
+    {
+      "name": "示例彩色打印机",
+      "enabled": true,
+      "priority": 20,
+      "dpi": [
+        600
+      ],
+      "rules": [
+        {
+          "paper": "A3",
+          "color": "黑白",
+          "duplex": "单面"
+        },
+        {
+          "paper": "A3",
+          "color": "黑白",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "A3",
+          "color": "黑白",
+          "duplex": "双面短边"
+        },
+        {
+          "paper": "A3",
+          "color": "彩色",
+          "duplex": "单面"
+        },
+        {
+          "paper": "A3",
+          "color": "彩色",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "A3",
+          "color": "彩色",
+          "duplex": "双面短边"
+        },
+        {
+          "paper": "A4",
+          "color": "黑白",
+          "duplex": "单面"
+        },
+        {
+          "paper": "A4",
+          "color": "黑白",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "A4",
+          "color": "黑白",
+          "duplex": "双面短边"
+        },
+        {
+          "paper": "A4",
+          "color": "彩色",
+          "duplex": "单面"
+        },
+        {
+          "paper": "A4",
+          "color": "彩色",
+          "duplex": "双面长边"
+        },
+        {
+          "paper": "A4",
+          "color": "彩色",
+          "duplex": "双面短边"
+        }
+      ]
+    }
+  ],
+  "prices": [
+    {
+      "paper": "A4",
+      "color": "黑白",
+      "duplex": "单面",
+      "unit": "面",
+      "tiers": [
+        [
+          20,
+          "0.20"
+        ],
+        [
+          100,
+          "0.15"
+        ],
+        [
+          null,
+          "0.10"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A4",
+      "color": "黑白",
+      "duplex": "双面",
+      "unit": "面",
+      "tiers": [
+        [
+          20,
+          "0.20"
+        ],
+        [
+          100,
+          "0.15"
+        ],
+        [
+          null,
+          "0.10"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A4",
+      "color": "彩色",
+      "duplex": "单面",
+      "unit": "面",
+      "tiers": [
+        [
+          null,
+          "1.00"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A4",
+      "color": "彩色",
+      "duplex": "双面",
+      "unit": "面",
+      "tiers": [
+        [
+          null,
+          "1.00"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A3",
+      "color": "黑白",
+      "duplex": "单面",
+      "unit": "面",
+      "tiers": [
+        [
+          null,
+          "0.40"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A3",
+      "color": "黑白",
+      "duplex": "双面",
+      "unit": "面",
+      "tiers": [
+        [
+          null,
+          "0.40"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A3",
+      "color": "彩色",
+      "duplex": "单面",
+      "unit": "面",
+      "tiers": [
+        [
+          null,
+          "2.00"
+        ]
+      ],
+      "mode": "progressive"
+    },
+    {
+      "paper": "A3",
+      "color": "彩色",
+      "duplex": "双面",
+      "unit": "面",
+      "tiers": [
+        [
+          null,
+          "2.00"
+        ]
+      ],
+      "mode": "progressive"
+    }
+  ],
+  "schema_version": 3,
+  "native_quality_enabled": false,
+  "coverage_enabled": true
+}

@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+*.spec
+build/
+dist/
+程序/
+*.exe
+打印诊断-*.txt
+settings*.json
+orders.sqlite*
+driver-capture/
+*.devmode
+diagnostic-launch.log
+data/
+generated/
+客户档案*.xlsx
+
+# build / release artifacts
+程序-*/
+*.zip
+*.7z
+排版预览*.pdf
+订单-*.html
+*.log
+
+# local dev
+.venv/
+cache/
