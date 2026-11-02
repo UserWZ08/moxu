@@ -1,16 +1,50 @@
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QPalette, QColor, QGuiApplication
+from PySide6.QtGui import QColor, QGuiApplication, QPalette
 from PySide6.QtWidgets import QApplication
 
+
 def apply_theme(mode):
-    dark=mode=='深色' or (mode=='跟随系统' and QGuiApplication.styleHints().colorScheme()==Qt.ColorScheme.Dark)
-    bg,card,fg,border,alternate=('#141c29','#1e2939','#e7edf7','#354359','#253246') if dark else ('#f2f5fa','#ffffff','#21324b','#dbe3ee','#f7f9fc')
-    app=QApplication.instance();palette=QPalette()
-    roles={'Window':bg,'WindowText':fg,'Base':card,'AlternateBase':alternate,'Text':fg,'Button':card,'ButtonText':fg,'ToolTipBase':card,'ToolTipText':fg,'Highlight':'#307f73','HighlightedText':'#ffffff','PlaceholderText':'#93a1b5' if dark else '#687b94','Light':border,'Midlight':border,'Mid':border,'Dark':bg,'Shadow':bg}
-    for name,color in roles.items():palette.setColor(getattr(QPalette.ColorRole,name),QColor(color))
-    for role in [QPalette.ColorRole.Text,QPalette.ColorRole.WindowText,QPalette.ColorRole.ButtonText]:palette.setColor(QPalette.ColorGroup.Disabled,role,QColor('#8490a0'))
+    dark = mode == "深色" or (
+        mode == "跟随系统"
+        and QGuiApplication.styleHints().colorScheme() == Qt.ColorScheme.Dark
+    )
+    bg, card, fg, border, alternate = (
+        ("#141c29", "#1e2939", "#e7edf7", "#354359", "#253246")
+        if dark
+        else ("#f2f5fa", "#ffffff", "#21324b", "#dbe3ee", "#f7f9fc")
+    )
+    app = QApplication.instance()
+    palette = QPalette()
+    roles = {
+        "Window": bg,
+        "WindowText": fg,
+        "Base": card,
+        "AlternateBase": alternate,
+        "Text": fg,
+        "Button": card,
+        "ButtonText": fg,
+        "ToolTipBase": card,
+        "ToolTipText": fg,
+        "Highlight": "#307f73",
+        "HighlightedText": "#ffffff",
+        "PlaceholderText": "#93a1b5" if dark else "#687b94",
+        "Light": border,
+        "Midlight": border,
+        "Mid": border,
+        "Dark": bg,
+        "Shadow": bg,
+    }
+    for name, color in roles.items():
+        palette.setColor(getattr(QPalette.ColorRole, name), QColor(color))
+    for role in [
+        QPalette.ColorRole.Text,
+        QPalette.ColorRole.WindowText,
+        QPalette.ColorRole.ButtonText,
+    ]:
+        palette.setColor(QPalette.ColorGroup.Disabled, role, QColor("#8490a0"))
     app.setPalette(palette)
-    app.setStyleSheet(f'''
+    app.setStyleSheet(
+        f"""
       QWidget{{font-family:"Microsoft YaHei UI";font-size:13px;color:{fg};}}
       QMainWindow,QDialog,QMessageBox{{background:{bg};}}
       QLineEdit,QComboBox,QSpinBox,QDoubleSpinBox,QPlainTextEdit,QTableView,QListView{{background:{card};color:{fg};border:1px solid {border};border-radius:8px;padding:7px;selection-background-color:#307f73;selection-color:white;alternate-background-color:{alternate};}}
@@ -46,5 +80,6 @@ def apply_theme(mode):
       QLabel#total{{font-size:34px;font-weight:700;color:#42a38e;padding:10px;}}
       QLabel#preview{{background:#ffffff;color:#526174;border:1px solid #dbe2e8;border-radius:12px;}}
       QToolTip{{background:{card};color:{fg};border:1px solid {border};}}
-    ''')
+    """
+    )
     return dark

@@ -1,15 +1,20 @@
-﻿[Setup]
+#define ReleaseVersion ReadIni(AddBackslash(SourcePath) + "release.ini", "app", "version", "")
+
+[Setup]
 AppId={{C31233B7-C2D6-48F1-A7B8-BAB49A20193E}
 AppName=墨序
-AppVersion=0.6.0
-AppPublisher=NeighbourPrint
+AppVersion={#ReleaseVersion}
+AppPublisher=UserWZ08
+AppPublisherURL=https://github.com/UserWZ08/moxu
+AppSupportURL=https://github.com/UserWZ08/moxu/issues
+AppUpdatesURL=https://github.com/UserWZ08/moxu/releases
 DefaultDirName={localappdata}\Programs\NeighbourPrint
 DefaultGroupName=墨序
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..
-OutputBaseFilename=墨序-安装包-0.6.0
+OutputBaseFilename=墨序-安装包-{#ReleaseVersion}
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -21,10 +26,13 @@ DisableProgramGroupPage=yes
 Name: "chinesesimp"; MessagesFile: "ChineseSimplified.isl"
 
 [Files]
-Source: "程序-0.6\MoXu\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "程序-{#ReleaseVersion}\MoXu\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "使用说明.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "P0-P1修复记录.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "验证记录.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "维护说明.md"; DestDir: "{app}"; Flags: ignoreversion
 Source: "本次更新与打印原理.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "0.6更新说明.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "0.8.2更新说明.md"; DestDir: "{app}"; Flags: ignoreversion
 Source: "打印机配置示例.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "THIRD_PARTY_NOTICES.md"; DestDir: "{app}"; Flags: ignoreversion
 
@@ -52,3 +60,18 @@ Name: desktopicon; Description: "创建桌面快捷方式"; Flags: unchecked
 
 [Run]
 Filename: "{app}\MoXu.exe"; Description: "启动墨序"; Flags: nowait postinstall skipifsilent
+
+[Code]
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  Command, ProgramPath: String;
+begin
+  if CurUninstallStep = usUninstall then
+  begin
+    ProgramPath := ExpandConstant('{app}\MoXu.exe');
+    if RegQueryStringValue(HKCU, 'Software\Microsoft\Windows\CurrentVersion\Run', 'MoXu.UserWZ08', Command) then
+      if (CompareText(Trim(Command), '"' + ProgramPath + '" --startup') = 0) or
+         (CompareText(Trim(Command), ProgramPath + ' --startup') = 0) then
+        RegDeleteValue(HKCU, 'Software\Microsoft\Windows\CurrentVersion\Run', 'MoXu.UserWZ08');
+  end;
+end;

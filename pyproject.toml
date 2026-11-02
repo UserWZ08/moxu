@@ -1,0 +1,15 @@
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+extend-exclude = '程序|data|licenses|assets'
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+extend-exclude = ["程序*", "data", "licenses", "assets"]
+
+[tool.ruff.lint]
+select = ["F", "E4", "E7", "E9", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"test_ui.py" = ["E402"]

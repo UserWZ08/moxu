@@ -1,0 +1,42 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>$title $order_id</title>
+<style>
+  body { font: 14px 'Microsoft YaHei', sans-serif; margin: 35px; color: #263345; }
+  h1 { color: #e77826; }
+  table { border-collapse: collapse; width: 100%; margin: 4mm 0; }
+  th, td {
+    padding: 8px; border-bottom: 1px solid #dce2e8;
+    text-align: left; word-break: break-word;
+  }
+  .custom { white-space: pre-wrap; }
+  .total { font-size: 28px; color: #d66d1f; }
+  @media print {
+    body { margin: 10mm; }
+    tr, img { break-inside: avoid; }
+  }
+</style>
+$top_images
+<h1>$title</h1>
+<div class="custom">$header_text</div>
+<p>订单号：$order_id　状态：$status</p>
+<h2>$address</h2>
+<p>客户：$customer</p>
+$contact_html
+<p>备注：$note</p>
+<table>
+  <tr>
+    <th>文件</th><th>页数</th><th>份数</th><th>纸张</th>
+    <th>颜色</th><th>单双面</th><th>打印机</th><th>已提交份数</th>
+  </tr>
+  $file_rows
+</table>
+<table>
+  <tr><th>计价类别</th><th>数量</th><th>模式</th><th>金额</th></tr>
+  $price_rows
+</table>
+<p>装订：$binding_text</p>
+<p class="total">$total_text</p>
+$bottom_images
+<div class="custom">$footer_text</div>
+<p>已提交表示交给系统打印队列，不代表纸张已经输出。</p>
